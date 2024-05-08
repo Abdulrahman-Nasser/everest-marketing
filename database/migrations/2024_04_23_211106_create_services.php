@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('file');
             $table->string('description');
+            $table->string('path');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 

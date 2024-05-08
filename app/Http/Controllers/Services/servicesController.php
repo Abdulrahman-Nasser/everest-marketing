@@ -12,17 +12,17 @@ class servicesController extends Controller
     public function index()
     {
         $services = Services::all();
-            $message = [
-                'massage' => 'get tabel services',
-                'data' => $services
-            ];
+        $message = [
+            'massage' => 'get tabel services',
+            'data' => $services
+        ];
         return response($message, 200);
     }
     public function store(Request $request)
     {
         $validator =   $request->validate([
             'fileUpload' => 'required|mimes:png,jpg',
-            'description'=> 'required'
+            'description' => 'required'
         ]);
 
         if (!$validator) {
@@ -36,7 +36,8 @@ class servicesController extends Controller
             $file->move($location, $fileName);
 
             $services->file = $fileName;
-            $services->description = $request -> description;
+            $services->description = $request->description;
+            $services->path = 'uploads/services/' . $fileName;
 
             $services->save();
             $message = [

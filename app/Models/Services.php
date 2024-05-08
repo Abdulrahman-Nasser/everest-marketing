@@ -11,6 +11,7 @@ class Services extends Model
     protected $table = 'services';
     protected $filable = [
         'file',
-        'description'
+        'description',
+        'path'
     ];
 }
